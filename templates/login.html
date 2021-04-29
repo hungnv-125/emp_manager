@@ -1,0 +1,50 @@
+<html>
+   <head>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type=text/javascript>
+    function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length).replace(/\\054/g, ',');
+    }
+    return null;
+}
+
+    function login(){
+    mail = $('input[name="mail"]').val()
+    password = $('input[name="password"]').val()
+      $.ajax(
+            {
+              type : 'POST',
+              url : "/login",
+               data : {
+                  "mail" : mail,
+                  "password" : password
+               },
+              success : function(res)
+              {
+                if (res.emp_id == null)
+                  alert(res.emp_id)
+                else
+                    alert(JSON.parse(getCookie("emp")))
+                    window.location.replace("http://localhost:5000/home")
+              }
+            });
+    }
+</script>
+   </head>
+   <body>
+<!--      {% if login_miss == True %}-->
+<!--         <h1> Login Fail</h1>-->
+<!--      {% endif %}-->
+
+      <form action = "http://localhost:5000/login" method = "POST">
+         <p>Mail<input type = "mail" name = "mail" /></p>
+         <p>Pass<input type = "password" name = "password" /></p>
+         <p><input type = "button" value = "submit" id="submit" onclick="login()" /></p>
+      </form>
+   </body>
+</html>

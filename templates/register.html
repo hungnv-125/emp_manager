@@ -1,0 +1,42 @@
+<html>
+   <head>
+              <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type=text/javascript>
+
+    function register(){
+    mail = $('input[name="mail"]').val()
+    password = $('input[name="password"]').val()
+    name = $('input[name="name"]').val()
+    salary = $('input[name="salary"]').val()
+      $.ajax(
+            {
+              type : 'POST',
+              url : "/register_handle",
+               data : {
+                  "mail" : mail,
+                  "password" : password,
+                  "name" : name,
+                  "salary" : salary
+               },
+              success : function(res)
+              {
+                  alert(res)
+              }
+            });
+    }
+</script>
+   </head>
+   <body>
+<!--      {% if login_miss == True %}-->
+<!--         <h1> Login Fail</h1>-->
+<!--      {% endif %}-->
+
+      <form>
+          <p>Name<input type = "text" name = "name" /></p>
+         <p>Mail<input type = "email" name = "mail" /></p>
+         <p>Pass<input type = "password" name = "password" /></p>
+          <p>Salary<input type = "number" name = "salary" min="0"/></p>
+         <p><input type = "button" value = "submit" id="submit" onclick="register()" /></p>
+      </form>
+   </body>
+</html>

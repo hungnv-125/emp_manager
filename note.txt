@@ -1,0 +1,5 @@
+-   bỏ use case thay doi thong tin nhan vien
+-   bo use case tim kiem thong tin cham cong
+-   sua use case xem thong tin cham cong nhan vien => xem thong tin cham
+cong (nhan, is_face) cac ngay dk chi dinh
+-   them use case xem chi tiet lich su cham cong
